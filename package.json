@@ -1,0 +1,24 @@
+{
+  "name": "energy-orchestrator",
+  "version": "1.0.0",
+  "description": "Smart Grid Energy Orchestrator Digital Twin with RL",
+  "main": "server.js",
+  "scripts": {
+    "install-all": "npm install --ignore-scripts && cd client && npm install",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "cd client && npm run dev"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "optionalDependencies": {
+    "@tensorflow/tfjs-node": "^4.20.0"
+  }
+}
+
