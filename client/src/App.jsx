@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const socket = io('http://localhost:3001', {
-  transports: ['websocket', 'polling'],
-  path: '/socket.io',
-  reconnection: true,
-  reconnectionAttempts: 5
-});
-
+const socket = io(
+  window.location.hostname === "localhost"
+    ? "http://localhost:3001"
+    : "https://your-backend.onrender.com",
+  {
+    transports: ["websocket"]
+  }
+);
 function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [latestData, setLatestData] = useState({});
